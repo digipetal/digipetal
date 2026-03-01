@@ -5,6 +5,8 @@ body {
     color: #333;
 }
 
+
+
 html {
     scroll-behavior: smooth;
 }
@@ -19,8 +21,6 @@ html {
         #4f46e5,
         #9333ea
     );
-
-    padding-top: 90px; /* prevents text hiding under navbar */
 }
 
 /* LEVEL 0 — YELLOW BACKGROUND */
@@ -30,9 +30,6 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    /*  background: linear-gradient(135deg, #FF7A18, #FF2E63); 
-  background-image: radial-gradient( circle 703px at 15.9% 53.4%,  rgba(80,15,85,1) 0%, rgba(11,83,149,1) 100.2% ); */
-
     background-image: radial-gradient(circle farthest-corner at 6.3% 21.8%, rgba(236, 6, 117, 1) 0%, rgba(13, 32, 67, 1) 90%);
     z-index: 1;
     overflow: hidden;
@@ -177,7 +174,7 @@ HERO SLIDER
 
 .hero-slider {
     position: relative;
-    height: 100vh;
+    min-height:calc(100vh - 90px);
     overflow: hidden;
 }
 
@@ -218,56 +215,95 @@ HERO SLIDER
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
+
 /*====================
-NAVBAR and Logo
-===================== */
-/* Navigation links */
-.nav-links {
-    display: flex;
-    gap: 80px;
-    list-style: none;
-    padding-left: 50%;
-    flex-wrap: nowrap;   /* prevents breaking */
+NAVBAR & LOGO
+=====================*/
+
+.navbar{
+    position:sticky;
+    top:0;
+    height:10%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    background:linear-gradient(180deg,#ffffff 0%,#f4f6fb 100%);
+    backdrop-filter:blur(12px);
+
+    z-index:1000;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 700;
+/* LOGO */
+/* LOGO WRAPPER */
+.logo a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
 }
 
-.nav-links li {
-    white-space: nowrap; /* prevents text cutting */
+/* LOGO IMAGE */
+.logo img{
+    height:70px;
+    width:auto;
+    object-fit:contain;
 }
 
-.navbar {
-        position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    height: 90px;
-    padding: 0 40px;
-    background: linear-gradient(180deg,#ffffff 0%,#f4f6fb 100%);
-    backdrop-filter: blur(12px);
-    z-index: 1000;
-    width: stretch;
-    
+/* BRAND NAME */
+.brand-name{
+    font-size:26px;
+    font-weight:700;
+    color:#0d2043;
+    letter-spacing:0.5px;
 }
 
-/* Logo container takes full navbar height */
-.logo {
-    height: 400%;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+@media(max-width:768px){
+
+.logo img{
+    height:50px;
 }
 
-/* Logo fills navbar height automatically */
-.logo img {
-    height: 80%;
-    width: auto;
-    object-fit: contain;
+.brand-name{
+    font-size:20px;
+}
+
+.hero-text {
+    position: absolute;
+    left: 10%;
+    max-width: 650px;
+    z-index: 3;
+}
+
+}
+
+/* NAV LINKS DESKTOP */
+.nav-links{
+    display:flex;
+    gap:60px;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.nav-links li{
+    white-space:nowrap;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#000;
+    font-weight:700;
+}
+
+/* HAMBURGER (hidden desktop) */
+.menu-toggle{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
 }
 
 .about {
@@ -565,25 +601,31 @@ PORTFOLIO
     background: #ec0675;
 }
 
-/* ============
-WHY Section 
-=============== */
+/* ===================================
+WHY SECTION
+=================================== */
 
+#why{
+    padding:80px 20px;
+}
+
+/* MAIN LAYOUT */
 .why-container{
-    display:flex;
-    gap:60px;
     max-width:1200px;
     margin:auto;
-    align-items:flex-start;
+
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:60px;
+    align-items:start;
 }
 
-.why-left{
-    flex:1;
-}
+/* ================= LEFT SIDE ================= */
 
 .why-left ul{
     list-style:none;
     padding:0;
+    margin:0;
 }
 
 .why-left li{
@@ -591,6 +633,7 @@ WHY Section
     margin-bottom:18px;
     padding-left:35px;
     position:relative;
+    line-height:1.5;
 }
 
 .why-left li::before{
@@ -601,20 +644,27 @@ WHY Section
     font-weight:bold;
 }
 
-.why-right{
-    flex:1.5;
+/* ================= RIGHT SIDE ================= */
 
+.why-right{
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(2,1fr);
     gap:25px;
 }
 
-
+/* TESTIMONIAL CARD */
 .testimonial-card{
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,204,255,1) 0%, rgba(230,204,255,1) 90% );
+    background-image:
+        radial-gradient(circle farthest-corner at 10% 20%,
+        rgba(255,204,255,1) 0%,
+        rgba(230,204,255,1) 90%);
+
     padding:25px;
     border-radius:12px;
+
     box-shadow:0 10px 30px rgba(0,0,0,0.12);
+
+    height:100%;
 }
 
 .testimonial-card p{
@@ -626,6 +676,40 @@ WHY Section
 .testimonial-card h4{
     margin:0;
     color:#0d2043;
+}
+
+
+/* ===================================
+TABLET
+=================================== */
+
+@media(max-width:992px){
+
+.why-container{
+    grid-template-columns:1fr;
+}
+
+.why-right{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+
+/* ===================================
+MOBILE
+=================================== */
+
+@media(max-width:768px){
+
+.why-right{
+    grid-template-columns:1fr;
+}
+
+.why-left li{
+    font-size:16px;
+}
+
 }
 
 /* ===========
@@ -712,4 +796,59 @@ Contact us
 .scroll-top:hover {
     transform: translateY(-5px);
 }
+
+/* =====================================
+MOBILE NAVBAR
+===================================== */
+
+@media(max-width:768px){
+
+/* navbar becomes sticky */
+.navbar{
+   
+    height:70px;
+}
+
+/* show hamburger */
+.menu-toggle{
+    display:block;
+    z-index:1100;
+}
+
+
+/* MOBILE MENU PANEL */
+.nav-links{
+    position:fixed;
+
+    top:70px;
+    left:-140%;
+
+    width:100%;
+    height:calc(100vh - 70px);
+
+    background:#ffffff;
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    gap:40px;
+
+    transition:0.4s ease;
+}
+
+/* ACTIVE STATE */
+.nav-links.active{
+    left:0;
+    width: max-content;
+    padding-left:15%;
+    padding-right:15%
+}
+
+.nav-links a{
+    font-size:22px;
+}
+
+}
+
 

@@ -6,6 +6,10 @@ body {
     overflow-x: hidden;
 }
 
+* {
+    outline: 1px solid red;
+}
+
 
 html {
     scroll-behavior: smooth;

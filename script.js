@@ -35,7 +35,7 @@ index = 0;
 updateSlider();
 }
 
-setInterval(nextSlide, 5000);
+//setInterval(nextSlide, 5000);
 
 /* click navigation */
 dots.forEach((dot,i)=>{

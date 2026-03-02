@@ -263,25 +263,6 @@ nav a:hover::after {
     letter-spacing: 0.5px;
 }
 
-@media(max-width:768px) {
-
-    .logo img {
-        height: 50px;
-    }
-
-    .brand-name {
-        font-size: 20px;
-    }
-
-    .hero-text {
-        position: absolute;
-        left: 10%;
-        max-width: 650px;
-        z-index: 3;
-    }
-
-}
-
 .nav-links {
     display: flex;
     gap: 60px;
@@ -393,6 +374,14 @@ nav a:hover::after {
 
     .about-image {
         margin-bottom: 40px;
+    }
+
+    .about-image::after {
+        display: none;
+    }
+
+    .about-image::before {
+        display: none;
     }
 }  
 
@@ -668,6 +657,12 @@ nav a:hover::after {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .about-image::after {
+        display: none;
+    }
+    .about-image::before {
+        display: none;
+    }
 }
 
 
@@ -752,6 +747,21 @@ nav a:hover::after {
 
 @media(max-width:768px) {
 
+     .logo img {
+        height: 50px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .hero-text {
+        position: absolute;
+        left: 10%;
+        max-width: 650px;
+        z-index: 3;
+    }
+    
     .why-right {
         grid-template-columns: 1fr;
     }
